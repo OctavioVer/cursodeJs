@@ -1,105 +1,64 @@
-alert("Hola bienvenido/a a nuestra caja registradora");
-
-class Persona {
-  constructor(nombre, apellido, edad, Dni) {
+class Producto {
+  constructor(id, nombre, precio, categoria) {
+    this.id = id;
     this.nombre = nombre;
-    this.apellido = apellido;
-    this.edad = edad;
-    this.Dni = Dni;
+    this.precio = precio;
+    this.categoria = categoria;
   }
 }
 
-alert("Porfavor, Ingrese sus datos");
-let nombre = prompt("Ingrese su nombre");
-let apellido = prompt("Ingrese su apellido");
-let edad = Number(prompt("Ingrese su edad"));
-let Dni = Number(prompt("Ingrese su Dni"));
-const Persona1 = new Persona(nombre, apellido, edad, Dni);
+let productos = [
+  new Producto(100, "queso azul", 1200, "quesos"),
+  new Producto(101, "queso parmesano", 1400, "quesos"),
+  new Producto(102, "queso mozzarella", 1450, "quesos"),
+  new Producto(103, "queso ricotta", 1500, "quesos"),
+  new Producto(104, "queso feta", 1500, "quesos"),
+  new Producto(105, "leche", 500, "lacteos"),
+  new Producto(106, "leche de oveja", 550, "lacteos"),
+  new Producto(107, "leche de cabra", 600, "lacteos"),
+  new Producto(108, "yogurt", 450, "lacteos"),
+];
 
-const listaDeCompra = [];
-let cantidad = 3;
-do {
-  let entrada = prompt("Ingrese su lista de compra \nMaximo 3 productos");
-  listaDeCompra.push(entrada.toUpperCase());
-} while (listaDeCompra.length != cantidad);
+let categorias = ["quesos", "lacteos"];
 
-let monto = Number(prompt("Ingrese el monto total de su lista de compra: "));
+let productosEnCarro = [];
 
-const cuotasInteres = (cant) => {
-  let montoPorCuota;
-  if (cant <= 12) {
-    monto = monto + (monto * 15) / 100;
-    montoPorCuota = monto / cant;
-    alert(`su resultado esta mostrado por consola`);
-    console.log("Bienvenido/as");
-    console.log(Persona1);
-    console.log(
-      `Su lista de compra es: \n${listaDeCompra.join(
-        "\n"
-      )}\nValor total= ${monto}pesos\nEl monto por cuota es de: ${montoPorCuota}pesos`
-    );
-  } else {
-    alert("La cantidad de sus cuotas supera nuestro límite");
-  }
-};
+let categoria = "";
 
-const cuotasFijas = (cant) => {
-  if (cant == 1) {
-    montoFijo = monto;
-    alert(`su resultado esta mostrado por consola`);
-    console.log(Persona1);
-    console.log(
-      `Su lista de compra es: \n${listaDeCompra.join(
-        "\n"
-      )}\nValor total= ${monto}pesos\nEl monto por cuota es de: ${montoFijo}pesos`
-    );
-  } else if (cant <= 12) {
-    monto = monto / cant;
-    montoPorCuota = monto;
-    alert(`su resultado esta mostrado por consola`);
-    console.log(Persona1);
-    console.log(
-      `Su lista de compra es: \n${listaDeCompra.join(
-        "\n"
-      )}\nValor total= ${monto}pesos\nEl monto por cuota es de: ${montoPorCuota}pesos`
-    );
-  } else {
-    alert("La cantidad de sus cuotas supera nuestro límite");
-  }
-};
-
-do {
-  opcion = Number(
-    prompt(
-      "Elija una opción:\n\n1.Pagar en cuotas sin interés\n2.Pagar en cuotas con interes(15%)\n3.Salir"
-    )
+while (categoria != "salir" && categoria != null) {
+  let aux = categorias.join(", ");
+  categoria = prompt(
+    'ingrese una categoria para comprar o ingresar "salir": \n(' + aux + ")"
   );
-  let cant;
 
-  switch (opcion) {
-    case 1:
-      cant = Number(
-        prompt(
-          "Solo se puede pagar en 1 o 12 cuotas, sin interés\nIngrese cuantas cuotas desea: "
-        )
-      );
-      cuotasFijas(cant);
-      break;
-    case 2:
-      cant = Number(
-        prompt(
-          "Solo se puede pagar en 1 o 12 cuotas, con interés\nIngrese cuantas cuotas desea: "
-        )
-      );
-      cuotasInteres(cant);
-      break;
-    case 3:
-      alert("Muchas gracias...");
-      break;
-    default:
-      alert("Opcion incorrecta");
-      break;
+  if (categoria != "salir" && categoria != null) {
+    let productosFiltradoPorCategoria = productos.filter(
+      (item) => item.categoria == categoria
+    );
+
+    let cartel = "";
+    for (let i = 0; i < productosFiltradoPorCategoria.length; i++) {
+      cartel +=
+        "id:" +
+        productosFiltradoPorCategoria[i].id +
+        " precio: " +
+        productosFiltradoPorCategoria[i].precio +
+        " " +
+        " producto: " +
+        productosFiltradoPorCategoria[i].nombre +
+        "\n";
+    }
+    let idSelecionado = parseInt(
+      prompt("Selecione el id del producto que quiera comprar: \n\n" + cartel)
+    );
+
+    let productoParaCarro = productosFiltradoPorCategoria.find(
+      (item) => item.id == idSelecionado
+    );
+
+    if (productoParaCarro) {
+      productosEnCarro.push(productoParaCarro);
+    }
+    console.log(productoParaCarro);
   }
-} while (opcion != 3);
-
-alert("Muchas gracias por utilizar nuestro simulador");
+}
