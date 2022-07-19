@@ -15,16 +15,12 @@ ul {
   margin: 10px;
 
   position: sticky;
-  left: 50%;
-  right: 50%;
-  transform: translate(-20%);
 
   border-top: solid #000 1px;
   border-bottom: solid #000 1px;
 
   display: flex;
   flex-direction: row;
-  justify-content: center;
   align-items: center;
   justify-content: space-between;
 }
@@ -130,4 +126,32 @@ ul {
 
 .tituloParrafo {
   width: 500px;
+}
+
+.carrito {
+  color: #000;
+  font-size: 15px;
+  display: block;
+}
+
+.divregistro {
+  background-color:#A6DFF2;
+}
+
+.tabla {
+  background-color: #70AFCE;
+}
+
+#titulo__div {
+ text-align: center;
+}
+
+.form-label {
+  font-weight: bold;
+}
+
+.enlace{
+  text-decoration: none;
+  color: #000;
+  font-weight: bolder;
 }
