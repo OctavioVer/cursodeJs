@@ -1,0 +1,32 @@
+let email = localStorage.getItem(`Email`);
+let contraseña = localStorage.getItem(`Contraseña`);
+let direccion = localStorage.getItem(`Direccion`);
+let direccion2 = localStorage.getItem(`Direccion2`);
+let ciudad = localStorage.getItem(`Ciudad`);
+let provincia = localStorage.getItem(`Provincia`);
+let codigoPostal = localStorage.getItem(`Codigo Postal`);
+document.getElementById(`inputEmail4`).value = email;
+document.getElementById(`inputPassword4`).value = contraseña;
+document.getElementById(`inputAddress`).value = direccion;
+document.getElementById(`inputAddress2`).value = direccion2;
+document.getElementById(`inputCity`).value = ciudad;
+document.getElementById(`inputState`).value = provincia;
+document.getElementById(`inputZip`).value = codigoPostal;
+
+let submit = document.getElementById("enviar");
+submit.onclick = () => {
+  let email = document.getElementById("inputEmail4").value;
+  let contraseña = document.getElementById("inputPassword4").value;
+  let direccion = document.getElementById("inputAddress").value;
+  let direccion2 = document.getElementById("inputAddress2").value;
+  let ciudad = document.getElementById("inputCity").value;
+  let provincia = document.getElementById("inputState").value;
+  let codigoPostal = document.getElementById("inputZip").value;
+  localStorage.setItem(`Email`, email);
+  localStorage.setItem("Contraseña", contraseña);
+  localStorage.setItem("Direccion", direccion);
+  localStorage.setItem("Direccion2", direccion2);
+  localStorage.setItem("Ciudad", ciudad);
+  localStorage.setItem("Provincia", provincia);
+  localStorage.setItem("Codigo Postal", codigoPostal);
+};
