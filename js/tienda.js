@@ -100,3 +100,15 @@ const actualizarCarrito = () => {
     0
   );
 };
+
+const btn = document.querySelector("#vaciar-carrito");
+btn.addEventListener("click", () => {
+  Swal.fire({
+    title: "Carrito vacio",
+    text: "Para agregar productos al carro, Vuelve a la tienda",
+    icon: "success",
+    confirmButtonText: "Aceptar",
+    backgroundcolor: `rgba(63,255,106,0.69)`,
+    border: `3px solid white;`,
+  });
+});
