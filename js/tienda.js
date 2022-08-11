@@ -24,28 +24,37 @@ botonVaciar.addEventListener("click", () => {
   actualizarCarrito();
 });
 
-stockProductos.forEach((producto) => {
-  const div = document.createElement("div");
-  div.classList.add("producto");
-  div.innerHTML = `
-  <div class="card" style="width: 18rem;">
-  <img src="${producto.img}" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">${producto.nombre}</h5>
-    <p class="card-text">$${producto.precio}</p>
-    <p class="card-text">${producto.desc}</p>
-    <a id="agregar${producto.id}" class="btn btn-primary">Comprar</a>
-  </div>
-</div>
-    `;
-  contenedorProductos.appendChild(div);
+fetch("../data.json")
+  .then((resinicial) => resinicial.json())
+  .then((res) => {
+    miArray = res;
 
-  const boton = document.getElementById(`agregar${producto.id}`);
+    miArray.forEach((producto) => {
+      const div = document.createElement("div");
+      div.classList.add("producto");
+      div.innerHTML = `
+      <div class="card" style="width: 18rem;">
+      <img src="${producto.img}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">${producto.nombre}</h5>
+        <p class="card-text">$${producto.precio}</p>
+        <p class="card-text">${producto.desc}</p>
+        <a id="agregar${producto.id}" class="btn btn-primary">Comprar</a>
+        </div>
+      </div>
+        `;
+      contenedorProductos.appendChild(div);
 
-  boton.addEventListener("click", () => {
-    agregarAlCarrito(producto.id);
+      const boton = document.getElementById(`agregar${producto.id}`);
+
+      boton.addEventListener("click", () => {
+        agregarAlCarrito(producto.id);
+      });
+    });
+  })
+  .catch((e) => {
+    console.log(e);
   });
-});
 
 const agregarAlCarrito = (prodId) => {
   const existe = carrito.some((prod) => prod.id === prodId);
@@ -57,7 +66,7 @@ const agregarAlCarrito = (prodId) => {
       }
     });
   } else {
-    const item = stockProductos.find((prod) => prod.id === prodId);
+    const item = miArray.find((prod) => prod.id === prodId);
     carrito.push(item);
   }
   actualizarCarrito();
