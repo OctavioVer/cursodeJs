@@ -34,7 +34,7 @@ fetch("../data.json")
       div.classList.add("producto");
       div.innerHTML = `
       <div class="card" style="width: 18rem;">
-      <img src="${producto.img}" class="card-img-top" alt="...">
+      <img src="${producto.img}" class="imgTienda" alt="...">
       <div class="card-body">
         <h5 class="card-title">${producto.nombre}</h5>
         <p class="card-text">$${producto.precio}</p>

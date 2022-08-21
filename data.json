@@ -43,5 +43,32 @@
     "desc": "Unos de los mejores quesos azules de la zona",
     "precio": 1200,
     "img": "../imagenes/images.jpeg"
+  },
+  {
+    "id": 6,
+    "nombre": "Queso Azul",
+    "tipo": "Lacteos",
+    "cantidad": 1,
+    "desc": "Unos de los mejores quesos azules de la zona",
+    "precio": 1200,
+    "img": "../imagenes/images.jpeg"
+  },
+  {
+    "id": 7,
+    "nombre": "Queso Azul",
+    "tipo": "Lacteos",
+    "cantidad": 1,
+    "desc": "Unos de los mejores quesos azules de la zona",
+    "precio": 1200,
+    "img": "../imagenes/images.jpeg"
+  },
+  {
+    "id": 8,
+    "nombre": "Queso Azul",
+    "tipo": "Lacteos",
+    "cantidad": 1,
+    "desc": "Unos de los mejores quesos azules de la zona",
+    "precio": 1200,
+    "img": "../imagenes/images.jpeg"
   }
 ]
